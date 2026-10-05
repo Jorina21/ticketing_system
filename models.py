@@ -13,8 +13,8 @@ class User(Base):
     user_id: Mapped[int] = mapped_column(primary_key = True, index = True, nullable = False)
     name: Mapped[str] = mapped_column(String(100), nullable = False)
     role: Mapped[str] = mapped_column(String(100), nullable = False)
-    username: Mapped[str] = mapped_column(string(100),nullable = Fale)
-    _password_hash = Column(String(128), nullable = False)
+    username: Mapped[str] = mapped_column(String(100),nullable = False)
+    _password_hash = mapped_column(String(128), nullable = False)
 
     @property
     def password(self): #prevents reading a plain text password
@@ -34,7 +34,7 @@ class User(Base):
         #verify password against the stored hash
         return bcrypt.check_pw(
                 plain_text_password.encode('utf-8'),
-                self._password_hash.encode('utf-8)
+                self._password_hash.encode('utf-8')
             )
 
 #other table
@@ -42,9 +42,8 @@ class User(Base):
 class Ticket(Base):
     __tablename__ = "Ticket"
     
-    ticket_id: mapped[int]: mapped_column()  
+    ticket_id : Mapped[int] = mapped_column()  
 
 
 class TicketNotes(Base):
-
-                    
+    pass      
