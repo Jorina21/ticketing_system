@@ -2,18 +2,14 @@ from enum import StrEnum
 from sqlalchemy import String, Text
 from sqlalchemy import Enum as SQLEnum
 from sqlalchemy.orm import Mapped, mapped_column
-# from database import Base
+from database import Base
 
 
 class UserRoles(StrEnum):
     EMPLOYEE = "employee"  #using auto() will cause issues if we changed the 
     TECHNICIAN = "technician"
+
     
-from sqlalchemy.orm import DeclarativeBase #dlete
-
-class Base(DeclarativeBase): #delete after expreiment
-    pass
-
 class User(Base):
 # class User(Base):
 

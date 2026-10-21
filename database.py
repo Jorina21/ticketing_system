@@ -1,13 +1,12 @@
+from config import get_settings
 from typing import Generator
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker, Session
 
+settings = get_settings()
 
 #Database 
-DATABASE = "  "  #postgres database eventually 
-
-#sql lite to test
-
+DATABASE = settings.TEST_DATABASE_URL.get_secret_value() #postgres database eventually 
 
 
 
