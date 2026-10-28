@@ -5,6 +5,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     # SecretStr masks credentials when printed (displays as '**********')
+    DATABASE_URL: SecretStr
     TEST_DATABASE_URL: SecretStr
 
     model_config = SettingsConfigDict(
