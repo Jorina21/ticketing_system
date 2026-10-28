@@ -6,7 +6,7 @@ from sqlalchemy.orm import DeclarativeBase, sessionmaker, Session
 settings = get_settings()
 
 #Database 
-DATABASE = settings.TEST_DATABASE_URL.get_secret_value() #postgres database eventually 
+DATABASE = settings.DATABASE_URL.get_secret_value() #postgres database eventually 
 
 
 
@@ -29,7 +29,7 @@ class Base(DeclarativeBase):
 SessionLocal = sessionmaker( 
     bind = engine,
     autoflush = False, #SQLAlchemy may send pending INSERT/UPDATE/DELETE statements to the database before a query so that the query sees the latest in-session state
-    expire_on_commit=False # caches all commits in memory if false, if true then it creates a new select statmetn to get that data from data into memory. after commit(), SQLAlchemy keeps the ORM object attributes available in memory instead of marking them as expired and potentially re-querying the database when you access them.
+    expire_on_commit=False # holds all the values in memory, if true then it creates a new select statmetn to get that data from data into memory. after commit(), SQLAlchemy keeps the ORM object attributes available in memory instead of marking them as expired and potentially re-querying the database when you access them.
     )
 
 #yield db per request

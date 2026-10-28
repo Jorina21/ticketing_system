@@ -27,12 +27,4 @@ class User(Base):
     username: Mapped[str] = mapped_column(String(50), unique = True)
     password_hash: Mapped[str] = mapped_column(Text ) #Text we can limit the amount on the uuser input side before reaching database 
     
-from sqlalchemy.schema import CreateTable
-from sqlalchemy.dialects import postgresql
-
-#inspect ddl 
-ddl = CreateTable(User.__table__).compile(dialect= postgresql.dialect())
-print(ddl)
-
-print(User.__table__.c.role.type.enums)
 
