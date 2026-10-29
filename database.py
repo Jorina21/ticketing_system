@@ -13,7 +13,8 @@ DATABASE = settings.DATABASE_URL.get_secret_value() #postgres database eventuall
 #create the engine 
 engine = create_engine(
     url = DATABASE,
-    
+    pool_pre_ping= True, #will query the data base to wait it up when its goes idle after inactivity
+    pool_recycle= 300, #300s = 5 mins, scraps queries that are alive longer than 5 mins and then requiries them 
     
       )
 
