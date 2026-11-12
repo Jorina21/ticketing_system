@@ -22,9 +22,13 @@ class User(Base):
                                                     values_callable=lambda obj: [e.value for e in obj],
                                                     native_enum=False,
                                                     create_constraint = True,
-                                                    name = "user_roles")
+                                                    name = "user_roles",
+                                                    server_default = UserRoles.EMPLOYEE.value)
                                                     )
     username: Mapped[str] = mapped_column(String(50), unique = True)
     password_hash: Mapped[str] = mapped_column(Text ) #Text we can limit the amount on the uuser input side before reaching database 
     
 
+if __name__ == "__main__":
+    new_user = User(username = "test_user")
+    db
